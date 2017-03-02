@@ -1,0 +1,15 @@
+<h1 align="center">Las Vegas Right Now</h1>
+
+<br>
+
+
+<div align="center" class="dialog-boxes">
+
+<%= form_tag "/results", method: :get do %>
+    <%= label_tag :originplace %>
+    <%= text_field_tag :originplace %>
+
+  <%= submit_tag "Search" %>
+
+  <% end %>
+</div>
