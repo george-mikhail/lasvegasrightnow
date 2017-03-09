@@ -1,0 +1,19 @@
+<section>
+    <div class="row">    
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="product_single" align="center">
+
+        <p> <img src="<%= @place.image_url %>" style="height:200px;width:300px"> </img></p>
+            <h2><%= @place.name %></h2>
+        
+        </div>
+
+        <h3>Reviews:</h3>
+        <% @place.reviews.each do |review| %>
+          Rating:<%= review.rating %><br>
+          Description: <%= review.description %>
+        <% end %>
+
+      </div>
+    </div>
+  </section>

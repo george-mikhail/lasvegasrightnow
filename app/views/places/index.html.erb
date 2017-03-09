@@ -1,0 +1,21 @@
+  <h2>Places:</h2>
+ 
+  
+  <% @places.each_slice(3) do |three_places| %>
+
+    <div class="row">
+    
+      <% three_places.each do |place| %>
+        <div class ="col-md-4 col-sm-4">
+          <div class="well">
+
+
+          <a href="/places/<%= place.id %>">Name: <%= place.name %></a>
+          <p> <img src="<%= place.image_url %>" style="height:200px;width:300px"> </img></p>
+          <br></br>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+  <% end %>

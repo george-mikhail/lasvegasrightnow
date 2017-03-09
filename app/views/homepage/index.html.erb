@@ -3,13 +3,25 @@
 <br>
 
 
-<div align="center" class="dialog-boxes">
+<div align="center" class="dialog-boxes" ng-app="app">
+  <div ng-controller="results_Ctrl">
+
+  <datalist id="names">
+      <option >SFO</option>
+      <option >JFK</option>
+      <option >ARD</option>
+      
+    </datalist>
+
+    <input list="names">
 
 <%= form_tag "/results", method: :get do %>
     <%= label_tag :originplace %>
-    <%= text_field_tag :originplace %>
+    <%= text_field_tag :originplace, nil, placeholder: "Departure Airport" %>
 
   <%= submit_tag "Search" %>
 
   <% end %>
+    </div>
+
 </div>

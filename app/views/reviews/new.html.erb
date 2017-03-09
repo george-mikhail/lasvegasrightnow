@@ -1,0 +1,28 @@
+<div class="col-sm-8 col-sm-offset-2">
+          <div class="review_single">
+            <h1>Create a new review:</h1>
+
+            <%= form_tag '/reviews', method: :post do %>
+
+             <div>
+                <%= label_tag :place %>
+                <%= collection_select :place, :place_id, Place.all, :id, :name %>
+              </div>
+
+              <div>
+                <%= label_tag :rating %>
+                <%= text_field_tag :rating %>
+              </div>
+              
+              
+              <div>
+                <%= label_tag :description %>
+                <%= text_field_tag :description %>
+              </div>
+
+
+              <%= submit_tag "Create Review" %>
+            <% end %>
+          </div>
+        </div>
+      </div>

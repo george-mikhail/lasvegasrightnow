@@ -15,4 +15,39 @@ Rails.application.routes.draw do
   get '/results' => 'results#index'
 
   post '/results' => 'results#create'
+
+  
+
+  get '/reviews' => 'reviews#index'
+
+  get '/reviews/new' => 'reviews#new'
+
+  post "/reviews" => "reviews#create"
+
+  get "/reviews/:id" =>
+  "reviews#show"
+
+  get "/reviews/:id/edit" => "reviews#edit"
+
+  patch "/reviews/:id" => "reviews#update"
+
+  delete "/reviews/:id" => "reviews#destory"
+
+
+
+
+  get '/places' => 'places#index'
+
+  get '/places/new' => 'places#new'
+
+  post "/places" => "places#create"
+
+  get "/places/:id" =>
+  "places#show"
+
+  get "/places/:id/edit" => "places#edit"
+
+  patch "/places/:id" => "places#update"
+
+  delete "/places/:id" => "places#destory"
 end
