@@ -15,6 +15,11 @@
                 <%= text_field_tag :image_url %>
               </div>
 
+              <div>
+                <%= label_tag :category %>
+                <%= select_tag(:category, options_for_select([['Hotel', 1], ['Club', 2], ['Restaurant', 3], ['Bar', 4], ['Other', 5]], :selected => params[:option])) %>
+              </div>
+
 
               <%= submit_tag "Create Place" %>
             <% end %>

@@ -1,0 +1,77 @@
+/*global angular */
+
+(function() {
+  "use strict";
+
+  angular.module("app").controller('resultsCtrl', function($scope, $http) {
+
+    $scope.setUp = function() { 
+
+
+
+      var currentTime = new Date();
+      var day = currentTime.getDate();
+      var month = currentTime.getMonth() + 1;
+      var year = currentTime.getFullYear();
+
+  
+
+      var todayDate = year + "-" + month + "-" + day;
+      var todayDateString = todayDate.toString();
+
+      console.log("originPlace: " + $scope.originPlace);
+
+      var first = { 
+        method: 'POST',
+        url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + "<%=ENV['GOOGLE_API_KEY'] %>",
+
+        
+        data: {
+          "request": {
+            "passengers": {
+              "adultCount": "1"
+            },
+            "slice": [
+              {
+                "origin": $scope.originPlace,
+                "destination": "LAS",
+                "date": todayDateString
+              }
+            ],
+            "solutions": "20",
+
+          }
+        }
+      };
+
+      $http(first).then(function(response) {
+        $scope.results = response.data;
+        $scope.tripOptions = $scope.results.trips.tripOption;
+        console.log(response);
+
+      });
+
+      //adding a function below to sort flight results but did not work
+
+
+      $scope.toggleOrder = function(attribute) {
+        if (attribute != $scope.orderAttribute){
+          $scope.direction = false;
+
+      }
+        else {
+          $scope.direction = !$scope.direction;
+        }
+        $scope.orderAttribute = attribute;
+
+      };
+
+    
+
+
+    };
+
+
+  });
+
+}());

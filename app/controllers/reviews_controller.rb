@@ -40,8 +40,8 @@ class ReviewsController < ApplicationController
 
     review_id = params[:id]
     review = Review.find_by(id:review_id)
-    product.rating = params[:rating]
-    product.description = params[:description]
+    review.rating = params[:rating]
+    review.description = params[:description]
     review.save
     flash[:success] = "Review successfully updated!"
     redirect_to "/reviews/#{review.id}"

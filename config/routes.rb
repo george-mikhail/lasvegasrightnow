@@ -10,9 +10,10 @@ Rails.application.routes.draw do
   
   get "/logout" => "sessions#destroy"
 
-  get '/' => 'homepage#index'
 
-  get '/results' => 'results#index'
+
+
+  get '/' => 'results#index'
 
   post '/results' => 'results#create'
 
@@ -50,4 +51,7 @@ Rails.application.routes.draw do
   patch "/places/:id" => "places#update"
 
   delete "/places/:id" => "places#destory"
+
+
+  get 'myreviews' => 'myreviews#index'
 end

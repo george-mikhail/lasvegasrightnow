@@ -14,9 +14,12 @@ class PlacesController < ApplicationController
 
     @place = Place.create(
       name: params[:name],
-      image_url: params[:image_url])
+      image_url: params[:image_url],
+      category: params[:category])
 
     @place.save
+
+    redirect_to "places/#{@place.id}"
     
   end
 

@@ -1,16 +1,40 @@
-<h1>Results:</h1>
+<h1 align="center">Las Vegas Right Now</h1>
 
 
-<div>
 
-empty hash: <%= @create_session.body %>
-
-<br>
+<div ng-app="app">
+  <div ng-controller="resultsCtrl">
 
 
-header: <%= @create_session.headers %>
+    <datalist id="cities">
+        <option >SFO</option>
+        <option >JFK</option>
+        <option >ARD</option>    
+    </datalist>
 
-</div>
+    <div id="searchSection" align="center">
+    <input list="cities" ng-model="originPlace" placeholder="Departure Airport">  
+    <button ng-click="setUp()">Search</button>
+    </div>
+
+    <br>
+
+    <button ng-click="toggleOrder('saleTotal')">Order by Price</button>
 
 
+
+    <div id="results" align="center" ng-repeat="tripOption in tripOptions track by $index">
+      <p>Sale Total:{{tripOption.saleTotal}}</p>
+      <p>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</p>
+      <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} <p>
+      <p>Origin City: {{tripOption.pricing[0].fare[0].origin}} </p>
+      <p>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}} </p>
+      <button onclick=" window.open('http://google.com/flights/#search;f=SFO;t=LAS;d=2017-05-19;r=2017-05-23;tt=o','_blank')">Buy Now</button>
+      <br>
+    </div>
+    <br>
+
+
+    </div>
+  </div>
 
