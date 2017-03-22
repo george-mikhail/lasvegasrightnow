@@ -5,6 +5,7 @@
 
   angular.module("app").controller('resultsCtrl', function($scope, $http) {
 
+
     $scope.setUp = function() { 
 
 
@@ -18,8 +19,9 @@
 
       var todayDate = year + "-" + month + "-" + day;
       var todayDateString = todayDate.toString();
+      $scope.date = todayDateString; 
 
-      console.log("originPlace: " + $scope.originPlace);
+      console.log("price: " + $scope.slicePrice);
 
       var first = { 
         method: 'POST',
@@ -47,24 +49,28 @@
       $http(first).then(function(response) {
         $scope.results = response.data;
         $scope.tripOptions = $scope.results.trips.tripOption;
-        console.log(response);
+        $.each($scope.tripOptions, function() {
+          this.saleTotal = parseFloat(this.saleTotal.slice(3, this.saleTotal.length));
+        });
+      
 
       });
 
-      //adding a function below to sort flight results but did not work
+
+      
 
 
-      $scope.toggleOrder = function(attribute) {
-        if (attribute != $scope.orderAttribute){
+      $scope.myOrder = function(attribute) {
+        if (attribute != $scope.defOrder) {
           $scope.direction = false;
-
-      }
-        else {
+        } else {
           $scope.direction = !$scope.direction;
         }
-        $scope.orderAttribute = attribute;
-
+        $scope.defOrder = attribute;
       };
+
+
+     
 
     
 
