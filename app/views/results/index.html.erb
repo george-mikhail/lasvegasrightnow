@@ -31,8 +31,7 @@
       <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} <p>
       <p>Origin City: {{tripOption.pricing[0].fare[0].origin}} </p>
       <p>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}} </p>
-      <button onclick=" window.open('https://www.google.com/flights/#search;f=SFO;t=LAS;d=2017-04-06;r=2017-04-10',
-  '_blank')">Buy Now</button>
+      <button ng-click="newTab()">Buy Now</button>
       <br>
     </div>
     <br>

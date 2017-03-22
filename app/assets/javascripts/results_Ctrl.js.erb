@@ -6,6 +6,9 @@
   angular.module("app").controller('resultsCtrl', function($scope, $http) {
 
 
+
+
+
     $scope.setUp = function() { 
 
 
@@ -20,6 +23,11 @@
       var todayDate = year + "-" + month + "-" + day;
       var todayDateString = todayDate.toString();
       $scope.date = todayDateString; 
+
+
+      $scope.newTab = function() {
+        window.open('https://www.google.com/flights/#search;f=SFO;t=LAS;d='+todayDateString+';r=2017-04-16;tt=o');
+      };
 
       console.log("price: " + $scope.slicePrice);
 
