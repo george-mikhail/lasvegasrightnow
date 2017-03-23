@@ -54,4 +54,10 @@ Rails.application.routes.draw do
 
 
   get 'myreviews' => 'myreviews#index'
+
+  namespace :api do 
+    namespace :v1 do
+      get "/airports" => 'airports#index'
+    end
+  end
 end

@@ -7,13 +7,11 @@
 
 
     <datalist id="cities">
-        <option >SFO</option>
-        <option >JFK</option>
-        <option >ARD</option>    
+      <option ng-repeat="airport in matchingAirports" value="{{airport.code}}">{{airport.city + ", " + airport.code}}</option>
     </datalist>
 
     <div id="searchSection" align="center">
-    <input list="cities" ng-model="originPlace" placeholder="Departure Airport">  
+    <input list="cities" ng-model="originPlace" placeholder="Departure Airport" ng-change="updateDatalist(originPlace)">  
     <button ng-click="setUp()">Search</button>
     </div>
 

@@ -15,6 +15,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'dotenv-rails'
 
+gem 'friendly_id'
+
 gem 'rails', '~> 5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

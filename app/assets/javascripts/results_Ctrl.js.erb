@@ -6,17 +6,25 @@
   angular.module("app").controller('resultsCtrl', function($scope, $http) {
 
 
-
+    $scope.updateDatalist = function(searchTerm) {
+      $http.get("/api/v1/airports.json?search=" + searchTerm).then(function(response) {
+        $scope.matchingAirports = response.data;
+      });
+    };
 
 
     $scope.setUp = function() { 
-
-
-
       var currentTime = new Date();
       var day = currentTime.getDate();
       var month = currentTime.getMonth() + 1;
       var year = currentTime.getFullYear();
+      if (month < 10) {
+        month = "0" + month.toString();
+      } 
+      if (day < 10) {
+        day = "0" + day.toString();
+      } 
+      $scope.matchingAirports = [{city: "", code: ""}];
 
   
 
