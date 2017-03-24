@@ -1,25 +1,27 @@
 <div class="col-sm-8 col-sm-offset-2">
           <div class="review_single">
-            <h1>Update review:</h1>
+            <h1>Edit review:</h1>
 
             <%= form_tag "/reviews/#{@review.id}", method: :patch do %>
 
              <div>
-                <%= label_tag :place %>
-                <%= collection_select :place, :place_id, Place.all, :id, :name %>
+                <%#= label_tag :place %>
+                <%#= collection_select :place, :place_id, Place.all, :id, :name, {selected: params[:place_id]} %>
               </div>
-
+              <!-- This could be a collection_select of the available options (1-5) -->
               <div>
                 <%= label_tag :rating %>
-                <%= text_field_tag :rating %>
+                <%= text_field_tag :rating, @review.rating %>
               </div>
               
               
               <div>
                 <%= label_tag :description %>
-                <%= text_field_tag :description %>
+                <%= text_field_tag :description, @review.description %>
               </div>
-
+              <div>
+                <%= hidden_field_tag :place_id, params[:place_id]%>
+              </div>
 
               <%= submit_tag "Update Review" %>
             <% end %>

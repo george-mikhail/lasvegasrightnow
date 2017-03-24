@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get '/reviews/new' => 'reviews#new'
 
+  get 'myreviews' => 'myreviews#index'
+
   post "/reviews" => "reviews#create"
 
   get "/reviews/:id" =>
@@ -37,23 +39,28 @@ Rails.application.routes.draw do
 
 
 
-  get '/places' => 'places#index'
+  # get '/places' => 'places#index'
 
-  get '/places/new' => 'places#new'
+  # get '/places/new' => 'places#new'
 
-  post "/places" => "places#create"
+  # post "/places" => "places#create"
 
-  get "/places/:id" =>
-  "places#show"
+  # get "/places/:id" =>
+  # "places#show"
 
-  get "/places/:id/edit" => "places#edit"
+  # get "/places/:id/edit" => "places#edit"
 
-  patch "/places/:id" => "places#update"
+  # patch "/places/:id" => "places#update"
 
-  delete "/places/:id" => "places#destory"
+  # delete "/places/:id" => "places#destory"
+
+  resources :places do
+    resources :reviews
+  end
 
 
-  get 'myreviews' => 'myreviews#index'
+
+
 
   namespace :api do 
     namespace :v1 do

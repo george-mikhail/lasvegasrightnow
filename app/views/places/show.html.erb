@@ -4,8 +4,10 @@
         <div class="product_single" align="center">
 
 
-        <p> <img src="<%= @place.image_url %>" style="height:200px;width:300px"> </img></p>
+        <p> <img src="<%= @place.image_url %>" style="height:250px;width:450px"> </img></p>
             <h2><%= @place.name %></h2>
+
+            <a href="/places/<%= @place.id%>/reviews/new" class="btn btn-info" role="button">Post Review for <%= @place.name %> </a>
         
         </div>
 

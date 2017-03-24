@@ -18,11 +18,15 @@ class ReviewsController < ApplicationController
       rating: params[:rating],
       description: params[:description],
       user_id: current_user.id,
-      place_id: params[:place]['place_id']
+      place_id: params[:place_id]
       )
 
-    @review.save
-    
+    if @review.save
+      redirect_to "/places/#{params[:place_id]}"
+    else
+      flash[:warning] = "Review cannot be lower than 1 or greater than 5"
+      redirect_to "/places/#{params[:place_id]}/reviews/new"
+    end
   end
 
 
@@ -42,10 +46,12 @@ class ReviewsController < ApplicationController
     review = Review.find_by(id:review_id)
     review.rating = params[:rating]
     review.description = params[:description]
-    review.save
-    flash[:success] = "Review successfully updated!"
-    redirect_to "/reviews/#{review.id}"
-    
+    if review.save
+      redirect_to "/places/#{review.place.id}"
+    else
+      flash[:warning] = "Review cannot be lower than 1 or greater than 5"
+      redirect_to "/reviews/#{review.id}/edit"
+    end
   end
 
   def destroy

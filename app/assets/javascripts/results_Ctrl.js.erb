@@ -12,6 +12,9 @@
       });
     };
 
+    $scope.newTab = function() {
+      window.open('https://www.google.com/flights/#search;f=' + $scope.originPlace + ';t=LAS;d=' + $scope.date + ';r=2017-04-16;tt=o');
+    };
 
     $scope.setUp = function() { 
       var currentTime = new Date();
@@ -31,11 +34,6 @@
       var todayDate = year + "-" + month + "-" + day;
       var todayDateString = todayDate.toString();
       $scope.date = todayDateString; 
-
-
-      $scope.newTab = function() {
-        window.open('https://www.google.com/flights/#search;f=SFO;t=LAS;d='+todayDateString+';r=2017-04-16;tt=o');
-      };
 
       console.log("price: " + $scope.slicePrice);
 
