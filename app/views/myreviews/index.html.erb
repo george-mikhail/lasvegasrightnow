@@ -10,7 +10,7 @@
         <% @user.reviews.each do |review| %>
           Rating:<%= review.rating %><br>
           Description: <%= review.description %> <br>
-          Place ID: <%= review.place_id %> <br>
+          Place: <%= review.place.name %> <br>
           <a href="/reviews/<%= review.id %>/edit">Edit Review</a>
           </p>
         <% end %>

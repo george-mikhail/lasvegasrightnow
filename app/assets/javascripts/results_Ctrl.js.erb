@@ -16,6 +16,16 @@
       window.open('https://www.google.com/flights/#search;f=' + $scope.originPlace + ';t=LAS;d=' + $scope.date + ';r=2017-04-16;tt=o');
     };
 
+
+
+    $http.get('http://api.wunderground.com/api/2685b91503dd6c76/conditions/q/NV/Las_Vegas.json').then(function(response) {
+      $scope.weather = response.data;
+      console.log($scope.weather);
+    });
+
+
+
+
     $scope.setUp = function() { 
       var currentTime = new Date();
       var day = currentTime.getDate();
