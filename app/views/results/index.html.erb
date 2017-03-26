@@ -16,7 +16,7 @@
 
     <div id="searchSection" align="center">
     <input list="cities" ng-model="originPlace" placeholder="Depart" ng-change="updateDatalist(originPlace)">  
-    <button ng-click="setUp()">Search</button>
+    <button ng-click="setUp(); show ">Search</button>
     </div>
 
     <br>
@@ -40,7 +40,7 @@
       <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} <p>
       <p>Origin City: {{tripOption.pricing[0].fare[0].origin}} </p>
       <p>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}} </p>
-      <button ng-click="show" ng-click="newTab()">Buy Now</button>
+      <button ng-click="newTab()">Buy Now</button>
       <br>
     </div>
     <br>
