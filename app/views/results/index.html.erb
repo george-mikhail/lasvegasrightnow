@@ -1,51 +1,69 @@
-<h1 align="center">Las Vegas Right Now</h1>
-
-<div id="lyft-web-button-parent">
-  
-</div>
-
-
-
 <div ng-app="app">
   <div ng-controller="resultsCtrl">
 
+    <!-- HERO -->
+    <section id="hero" class="module-hero module-video module-full-height bg-light-30" data-background="assets/images/section-11.jpg">
 
-    <datalist id="cities">
-      <option ng-repeat="airport in matchingAirports" value="{{airport.code}}">{{airport.city + ", " + airport.code}}</option>
-    </datalist>
+      <!-- HERO TEXT -->
+      <div class="hero-caption">
+        <div class="hero-text">
 
-    <div id="searchSection" align="center">
-    <input list="cities" ng-model="originPlace" placeholder="Depart" ng-change="updateDatalist(originPlace)">  
-    <button ng-click="setUp(); show ">Search</button>
+
+
+          <datalist id="cities">
+            <option ng-repeat="airport in matchingAirports" value="{{airport.code}}">{{airport.city + ", " + airport.code}}</option>
+          </datalist>
+
+          <div id="searchSection" align="center">
+          <input list="cities" ng-model="originPlace" placeholder="Depart" ng-change="updateDatalist(originPlace)">  
+          <a href="#sunday" class="btn btn-info" ng-click="setUp(); show ">Search</a>
+          </div>
+
+          <br>
+
+          <div id="weather">
+          <p> Current Weather:</p>
+          <p>Temperature: {{weather.current_observation.temp_f}}</p>
+          <img src="{{weather.current_observation.icon_url}}" alt="">
+            
+          </div>
+
+        <!-- /HERO TEXT -->
+
+        <!-- YOUTUBE VIDEO-->
+        <div class="video-player" data-property="{videoURL:'https://www.youtube.com/watch?v=uG1qZlEtorM', containment:'.module-video', quality:'large', startAt:0, autoPlay:true, loop:true, opacity:1, showControls:false, showYTLogo:false, vol:0, mute:true}"></div>
+        <!-- /YOUTUBE VIDEO-->
+
+      </section>
+      <!-- /HERO -->
+
+
+      <div id="results-anchor">
+        <div id="lyft-web-button-parent"></div>
+
+        <button ng-if="show" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
+
+        <button ng-if="show" ng-click="myOrder('saleTotal')">Order by Price</button>
+
+
+
+        <div id="results" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
+          <p>Sale Total:{{tripOption.saleTotal}}</p>
+          <p>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</p>
+          <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} </p>
+          <p>Origin City: {{tripOption.pricing[0].fare[0].origin}} </p>
+          <p>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}} </p>
+          <button ng-click="newTab()">Buy Now</button>
+          <br>
+        </div>
+        <br>
+      </div>
+
+
+
+      </div>
     </div>
 
-    <br>
 
-    <div id="weather">
-    <p> Current Weather:</p>
-    <p>Temperature: {{weather.current_observation.temp_f}}</p>
-    <img src="{{weather.current_observation.icon_url}}" alt="">
-      
-    </div>
-
-    <button ng-if="show" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
-
-    <button ng-if="show" ng-click="myOrder('saleTotal')">Order by Price</button>
-
-
-
-    <div id="results" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
-      <p>Sale Total:{{tripOption.saleTotal}}</p>
-      <p>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</p>
-      <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} <p>
-      <p>Origin City: {{tripOption.pricing[0].fare[0].origin}} </p>
-      <p>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}} </p>
-      <button ng-click="newTab()">Buy Now</button>
-      <br>
-    </div>
-    <br>
-
-
-    </div>
   </div>
-
+</div>
