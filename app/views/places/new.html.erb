@@ -17,7 +17,7 @@
 
               <div>
                 <%= label_tag :category %>
-                <%= select_tag(:category, options_for_select([['Hotel', 1], ['Club', 2], ['Restaurant', 3], ['Bar', 4], ['Other', 5]], :selected => params[:option])) %>
+                <%= select_tag(:category, options_for_select([['Hotel'], ['Club'], ['Restaurant'], ['Bar'], ['Other']], :selected => params[:option])) %>
               </div>
 
 

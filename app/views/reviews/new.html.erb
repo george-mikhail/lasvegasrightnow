@@ -11,7 +11,7 @@
               <!-- This could be a collection_select of the available options (1-5) -->
               <div>
                 <%= label_tag :rating %>
-                <%= text_field_tag :rating %>
+                <%= select_tag(:rating, options_for_select([[1], [2], [3], [4], [5]], :selected => params[:option])) %>
               </div>
               
               
