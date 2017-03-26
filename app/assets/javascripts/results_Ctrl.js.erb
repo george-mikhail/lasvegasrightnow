@@ -1,4 +1,5 @@
 /*global angular */
+/*global google */
 
 (function() {
   "use strict";
@@ -97,11 +98,33 @@
 
 
       $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + $scope.originPlace + "&key=<%=ENV['GEOLOCATOR_KEY'] %>").then(function(response) {
+        var lyftDiv = document.getElementById("lyft-web-button-parent");
+        console.log(lyftDiv);
+        lyftDiv.innerHTML = "";
         $scope.geolocation = response.data;
         $scope.latitude = $scope.geolocation.results[0].geometry.viewport.northeast.lat;
         $scope.longitude = $scope.geolocation.results[0].geometry.viewport.northeast.lng;
-        console.log($scope.geolocation);
+        console.log("LAT: " + $scope.latitude, "LONG: " + $scope.longitude);
+
+        !function(e,t,n,o,l,i,a,c,d,r,u,y,f,m,b,s){var B=t.createElement('script');B.async=!0,
+          B.onload=function(){s!==o&&(e[s]=e[o],delete e[o]),b!==l&&(e[b]=e[l],delete e[l]);
+          var n={address:d,latitude:r,longitude:u,name:y};e[s].initialize({clientId:i,clientToken:a,
+          googleApiKey:c,location:n,objectName:s,parentElement:t.body}),e[b].initialize({clientId:i,
+          clientToken:a,location:n,objectName:b,onClick:function(){return e[s].open(),!1},
+          parentElement:f,theme:m})},B.src=n,f.insertBefore(B,f.childNodes[0])}(window,document,
+          'https://cdn.lyft.com/lyft-web-sdk/1.1.2/lyftWebButton.min.js','lyftWebModal',
+          'lyftWebButton','P5RTmlOVapfl',
+          'gAAAAABY1BMFNwbREhSWhVHWQw0KCmCgNizd8xiXzbc0x_iZAUxek_7n9N8meUIoUmi_S4wUCAFty6ir9L_B3Vnc7xLIi0H_2kKuZqAuk8lrd8H0LlAahBrjl74_4e-Rbp4OHSsHCYnxpQipEd6P_uQfx-hahyJcuk1qg6dw9ihneVvuz3odj4o=',
+          'AIzaSyD3hI2dnfTVxaPXS_nKnheeYRqFoCqlsRM',
+          'Your Destination',
+          $scope.latitude,$scope.longitude,$scope.originPlace,
+          document.getElementById('lyft-web-button-parent'),
+          'multicolor','lyftWebButton','lyftWebModal'
+        );
+
       });
+
+      
 
 
      
