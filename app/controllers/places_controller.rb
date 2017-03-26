@@ -1,9 +1,11 @@
 class PlacesController < ApplicationController
 
   def index
-
-    @places = Place.all
-    
+    if params[:category]
+      @places = Place.where(category: params[:category])
+    else
+      @places = Place.all
+    end
   end
 
   def new
