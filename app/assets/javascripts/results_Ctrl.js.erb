@@ -96,7 +96,7 @@
       //Longitude and Latitude of Aiport Code. Use this info and plug into Lyft API
 
 
-      $http.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + $scope.originPlace + '&key=AIzaSyDOGngAq6xJkH8ChPY8iSamkK0l234wkek').then(function(response) {
+      $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + $scope.originPlace + "&key=<%=ENV['GEOLOCATOR_KEY'] %>").then(function(response) {
         $scope.geolocation = response.data;
         $scope.latitude = $scope.geolocation.results[0].geometry.viewport.northeast.lat;
         $scope.longitude = $scope.geolocation.results[0].geometry.viewport.northeast.lng;
