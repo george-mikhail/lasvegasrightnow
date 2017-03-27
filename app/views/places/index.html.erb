@@ -1,24 +1,39 @@
 
 <div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2 align="center">Places:</h2>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1 align="center">Places:</h1>
 
-<% if current_user %>
+  <br>
 
-<a href="/myreviews" class="btn btn-info" role="button">My Reviews</a>
+    <div align="center" id="filter-tabs">
 
-<% end %>
+      <% if current_user %>
 
-<a href="/places?category=Bar" class="btn btn-info" role="button">Bars</a>
+      <a href="/myreviews" class="btn btn-info" role="button">My Reviews</a>
 
-<br>
-<br>
+      <% end %>
+
+      <a href="/places" class="btn btn-info" role="button">All</a>
+
+      <a href="/places?category=Hotel" class="btn btn-info" role="button">Hotels</a>
+
+      <a href="/places?category=Bar" class="btn btn-info" role="button">Bars</a>
+
+       <a href="/places?category=Club" class="btn btn-info" role="button">Clubs</a>
+
+      <br>
+      <br>
+
+    </div>
 
 </div>
+
+
 
  
   
@@ -31,8 +46,8 @@
           <div class="well">
 
 
-          <a href="/places/<%= place.id %>">Name: <%= place.name %></a>
-          <p> <img src="<%= place.image_url %>" style="height:200px;width:300px"> </img></p>
+          <a href="/places/<%= place.id %>"><%= place.name %></a>
+          <p> <img src="<%= place.image_url %>" style="height:300px;width:400px"> </img></p>
           <br></br>
           </div>
         </div>
