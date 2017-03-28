@@ -26,3 +26,7 @@ section {
 .navbar-right {
   padding-right: 25px;
 }
+
+.navbar-fixed-top {
+  background-color: #a8a8a8;
+}
