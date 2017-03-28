@@ -67,8 +67,11 @@
         $.each($scope.tripOptions, function() {
           this.saleTotal = parseFloat(this.saleTotal.slice(3, this.saleTotal.length));
         });
-        $location.hash("anchor");
-        $anchorScroll();
+        setTimeout(function() {
+          $location.hash("anchor");
+          $anchorScroll();
+        },
+      3000);
       });
       //Longitude and Latitude of Aiport Code. Use this info and plug into Lyft API
       $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + $scope.originPlace + "&key=<%=ENV['GEOLOCATOR_KEY'] %>").then(function(response) {
