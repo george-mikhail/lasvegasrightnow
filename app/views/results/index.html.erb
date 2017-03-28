@@ -23,7 +23,7 @@
 
 
           <div id="weather">
-          <p class="weather">{{weather.current_observation.temp_f}}</p> 
+          <p class="weather">{{weather.current_observation.temp_f}}F</p> 
           <img class="weather-image" src="{{weather.current_observation.icon_url}}" alt="">
             
           </div>
@@ -47,7 +47,7 @@
 
 
 
-        <div align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
+        <div class="col-md-12 box" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
           <p>Sale Total:{{tripOption.saleTotal}}</p>
           <p>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</p>
           <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} </p>
