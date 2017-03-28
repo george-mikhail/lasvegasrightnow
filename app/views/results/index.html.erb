@@ -5,14 +5,19 @@
     <section id="hero" class="module-hero module-video module-full-height bg-light-30" data-background="assets/images/section-11.jpg">
 
       <!-- HERO TEXT -->
-      <div class="hero-caption">
-        <div class="hero-text">
 
 
 
           <datalist id="cities">
             <option ng-repeat="airport in matchingAirports" value="{{airport.code}}">{{airport.city + ", " + airport.code}}</option>
           </datalist>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
 
           <div id="searchSection" align="center">
           <input id="search" list="cities" ng-model="originPlace" placeholder="Depart" ng-change="updateDatalist(originPlace)">  
