@@ -61,11 +61,13 @@
           }
         }
       };
+      $scope.loading = true;
       $http(first).then(function(response) {
         $scope.results = response.data;
         $scope.tripOptions = $scope.results.trips.tripOption;
         $.each($scope.tripOptions, function() {
           this.saleTotal = parseFloat(this.saleTotal.slice(3, this.saleTotal.length));
+          $scope.loading = false;
         });
         setTimeout(function() {
           $location.hash("anchor");
