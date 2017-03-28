@@ -1,12 +1,6 @@
+<section class="module">
 
-<div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1 align="center">Places:</h1>
+<h1 align="center">Places:</h1>
 
   <br>
 
@@ -26,32 +20,41 @@
 
        <a href="/places?category=Club" class="btn btn-info" role="button">Clubs</a>
 
-      <br>
-      <br>
 
     </div>
 
 </div>
 
+      <div class="container">
 
+        <div class="row multi-columns-row">
 
- 
-  
-  <% @places.each_slice(3) do |three_places| %>
+        <% @places.each_slice(3) do |three_places| %>
 
-    <div class="row">
-    
-      <% three_places.each do |place| %>
-        <div class ="col-md-4 col-sm-4">
-          <div class="well">
-
-
-          <a href="/places/<%= place.id %>"><%= place.name %></a>
-          <p> <img src="<%= place.image_url %>" style="height:300px;width:400px"> </img></p>
-          <br></br>
+          <!-- POST -->
+          <% three_places.each do |place| %>
+          <div class="col-sm-6 col-md-4 col-lg-4 m-b-60">
+            <div class="post">
+              <div class="post-media">
+                <a href="/places/<%= place.id %>">
+                  <img src="<%= place.image_url %>" alt="">
+                </a>
+              </div>
+              <div class="post-header">
+                <h4 class="post-title font-alt">
+                  <a href="/places/<%= place.id %>"><%= place.name %></a>
+                </h4>
+              </div>
+            </div>
           </div>
+
+          <% end %>
+          <% end %>
+          <!-- /POST -->
+
+
         </div>
 
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+
+    </section>

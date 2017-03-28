@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+
+section {
+  padding-top: 70px;
+}
+
+.multi-columns-row {
+  padding-top: 160px;
+}
