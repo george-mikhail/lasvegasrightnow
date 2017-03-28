@@ -4,7 +4,7 @@
 (function() {
   "use strict";
 
-  angular.module("app").controller('resultsCtrl', function($scope, $http) {
+  angular.module("app").controller('resultsCtrl', function($scope, $http, $location, $anchorScroll) {
 
 
     $scope.updateDatalist = function(searchTerm) {
@@ -27,7 +27,7 @@
 
 
 
-    $scope.setUp = function() { 
+    $scope.setUp = function() {
       var currentTime = new Date();
       var day = currentTime.getDate();
       var month = currentTime.getMonth() + 1;
@@ -39,20 +39,12 @@
         day = "0" + day.toString();
       } 
       $scope.matchingAirports = [{city: "", code: ""}];
-
-  
-
       var todayDate = year + "-" + month + "-" + day;
       var todayDateString = todayDate.toString();
       $scope.date = todayDateString; 
-
-      console.log("price: " + $scope.slicePrice);
-
       var first = { 
         method: 'POST',
         url: "https://www.googleapis.com/qpxExpress/v1/trips/search?key=" + "<%=ENV['GOOGLE_API_KEY'] %>",
-
-        
         data: {
           "request": {
             "passengers": {
@@ -66,46 +58,25 @@
               }
             ],
             "solutions": "20",
-
           }
         }
       };
-
       $http(first).then(function(response) {
         $scope.results = response.data;
         $scope.tripOptions = $scope.results.trips.tripOption;
         $.each($scope.tripOptions, function() {
           this.saleTotal = parseFloat(this.saleTotal.slice(3, this.saleTotal.length));
         });
-      
-
+        $location.hash("anchor");
+        $anchorScroll();
       });
-
-
-      
-
-
-      $scope.myOrder = function(attribute) {
-        if (attribute != $scope.defOrder) {
-          $scope.direction = false;
-        } else {
-          $scope.direction = !$scope.direction;
-        }
-        $scope.defOrder = attribute;
-      };
-
       //Longitude and Latitude of Aiport Code. Use this info and plug into Lyft API
-
-
       $http.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + $scope.originPlace + "&key=<%=ENV['GEOLOCATOR_KEY'] %>").then(function(response) {
         var lyftDiv = document.getElementById("lyft-web-button-parent");
-        console.log(lyftDiv);
         lyftDiv.innerHTML = "";
         $scope.geolocation = response.data;
         $scope.latitude = $scope.geolocation.results[0].geometry.viewport.northeast.lat;
         $scope.longitude = $scope.geolocation.results[0].geometry.viewport.northeast.lng;
-        console.log("LAT: " + $scope.latitude, "LONG: " + $scope.longitude);
-
         !function(e,t,n,o,l,i,a,c,d,r,u,y,f,m,b,s){var B=t.createElement('script');B.async=!0,
           B.onload=function(){s!==o&&(e[s]=e[o],delete e[o]),b!==l&&(e[b]=e[l],delete e[l]);
           var n={address:d,latitude:r,longitude:u,name:y};e[s].initialize({clientId:i,clientToken:a,
@@ -121,25 +92,15 @@
           document.getElementById('lyft-web-button-parent'),
           'multicolor','lyftWebButton','lyftWebModal'
         );
-
       });
-
-
-      $scope.show = function() {
-        true;
-      };
-
-      
-
-
-     
-
-    
-
-
     };
-
-
+    $scope.myOrder = function(attribute) {
+      if (attribute != $scope.defOrder) {
+        $scope.direction = false;
+      } else {
+        $scope.direction = !$scope.direction;
+      }
+      $scope.defOrder = attribute;
+    };
   });
-
 }());

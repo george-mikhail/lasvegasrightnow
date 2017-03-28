@@ -15,16 +15,16 @@
           </datalist>
 
           <div id="searchSection" align="center">
-          <input list="cities" ng-model="originPlace" placeholder="Depart" ng-change="updateDatalist(originPlace)">  
+          <input id="search" list="cities" ng-model="originPlace" placeholder="Depart" ng-change="updateDatalist(originPlace)">  
           <a class="btn btn-info" ng-click="setUp(); show ">Search</a>
           </div>
 
           <br>
 
+
           <div id="weather">
-          <p> Current Weather:</p>
-          <p>Temperature: {{weather.current_observation.temp_f}}</p>
-          <img src="{{weather.current_observation.icon_url}}" alt="">
+          <p class="weather">{{weather.current_observation.temp_f}}</p> 
+          <img class="weather-image" src="{{weather.current_observation.icon_url}}" alt="">
             
           </div>
 
@@ -36,18 +36,18 @@
 
       </section>
       <!-- /HERO -->
+      <div id="anchor" style="position:relative;top:-98px;"></div>
 
-
-      <div id="results-anchor">
+      <div id="results">
         <div id="lyft-web-button-parent"></div>
 
-        <button ng-if="show" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
+        <button ng-if="tripOptions" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
 
-        <button ng-if="show" ng-click="myOrder('saleTotal')">Order by Price</button>
+        <button ng-if="tripOptions" ng-click="myOrder('saleTotal')">Order by Price</button>
 
 
 
-        <div id="results" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
+        <div align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
           <p>Sale Total:{{tripOption.saleTotal}}</p>
           <p>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</p>
           <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} </p>
