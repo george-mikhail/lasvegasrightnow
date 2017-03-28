@@ -41,22 +41,47 @@
       <div ng-show="tripOptions" id="results">
         <div id="lyft-web-button-parent"></div>
 
-        <button ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
+        <button class="btn btn-default" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
 
-        <button  ng-click="myOrder('saleTotal')">Order by Price</button>
+        <button class="btn btn-default"  ng-click="myOrder('saleTotal')">Order by Price</button>
 
 
 
-        <div class="col-md-12 box" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
-          <p>Sale Total:{{tripOption.saleTotal}}</p>
-          <p>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</p>
-          <p>Airline Code: {{tripOption.pricing[0].fare[0].carrier}} </p>
-          <p>Origin City: {{tripOption.pricing[0].fare[0].origin}} </p>
-          <p>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}} </p>
-          <button ng-click="newTab()">Buy Now</button>
-          <br>
+        <div class="col-md-4 box" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
+          <section class="module">
+
+      <div class="container">
+
+
+        <div class="row multi-columns-row">
+
+          <!-- PRICE-TABLE -->
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="price-table font-alt">
+              <h4>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</h4>
+              <div class="borderline"></div>
+              <p class="price"><span>$</span>{{tripOption.saleTotal}}</p>
+              <ul class="price-details">
+                <li>Airline Code: {{tripOption.pricing[0].fare[0].carrier}}</li>
+                <li>Origin City: {{tripOption.pricing[0].fare[0].origin}}</li>
+                <li>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}}</li>
+              </ul>
+              <a ng-click="newTab()" href="#" class="btn btn-d btn-round">Buy Now</a>
+            </div>
+          </div>
+          <!-- /PRICE-TABLE -->
+
+
         </div>
+
+      </div>
+
+    </section>
+
+        </div>
+
         <br>
+
       </div>
 
 
