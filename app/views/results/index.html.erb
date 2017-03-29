@@ -45,9 +45,9 @@
       <div ng-show="tripOptions" id="results">
         <div id="lyft-web-button-parent"></div>
 
-        <button class="btn btn-default" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
+        <button id="filterone" class="btn btn-default" ng-click="myOrder('slice[0].segment[0].leg[0].departureTime')">Order by Departure Time</button>
 
-        <button class="btn btn-default"  ng-click="myOrder('saleTotal')">Order by Price</button>
+        <button id="filtertwo" class="btn btn-default"  ng-click="myOrder('saleTotal')">Order by Price</button>
 
 
         <section class="module">

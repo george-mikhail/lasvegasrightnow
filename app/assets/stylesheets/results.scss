@@ -40,6 +40,15 @@
 
 #lyft-web-button-parent {
   border: 5px solid #FF00BF;
+  padding-left: 10px;
+}
+
+#lyft-web-button-parent {
+  float: right;
+}
+
+.lyft-web-modal {
+  z-index: 1031 !important;
 }
 
 
@@ -61,6 +70,8 @@
 
 
 
-.btn-filter {
-  float: right;
+
+#results {
+  padding-left: 10px;
+  padding-right: 10px;
 }
