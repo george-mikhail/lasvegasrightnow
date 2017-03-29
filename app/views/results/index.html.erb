@@ -3,11 +3,7 @@
 
     <!-- HERO -->
     <section id="hero" class="module-hero module-video module-full-height bg-light-30" data-background="assets/images/section-11.jpg">
-
       <!-- HERO TEXT -->
-
-
-
           <datalist id="cities">
             <option ng-repeat="airport in matchingAirports" value="{{airport.code}}">{{airport.city + ", " + airport.code}}</option>
           </datalist>
@@ -54,42 +50,28 @@
         <button class="btn btn-default"  ng-click="myOrder('saleTotal')">Order by Price</button>
 
 
-
-        <div class="col-md-4 box" align="center" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
-          <section class="module">
-
-      <div class="container">
-
-
-        <div class="row multi-columns-row">
-
-          <!-- PRICE-TABLE -->
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="price-table font-alt">
-              <h4>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</h4>
-              <div class="borderline"></div>
-              <p class="price"><span>$</span>{{tripOption.saleTotal}}</p>
-              <ul class="price-details">
-                <li>Airline Code: {{tripOption.pricing[0].fare[0].carrier}}</li>
-                <li>Origin City: {{tripOption.pricing[0].fare[0].origin}}</li>
-                <li>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}}</li>
-              </ul>
-              <a ng-click="newTab()" href="#" class="btn btn-d btn-round">Buy Now</a>
+        <section class="module">
+          <div class="container">
+            <div class="row multi-columns-row" style="padding-top: 0px;">
+              <!-- PRICE-TABLE -->
+              <div class="col-sm-6 col-md-4 col-lg-4" ng-repeat="tripOption in tripOptions| orderBy:defOrder:direction track by $index">
+                <div class="price-table font-alt">
+                  <h4>Departure Time: {{tripOption.slice[0].segment[0].leg[0].departureTime}}</h4>
+                  <div class="borderline"></div>
+                  <p class="price"><span>$</span>{{tripOption.saleTotal}}</p>
+                  <ul class="price-details">
+                    <li>Airline Code: {{tripOption.pricing[0].fare[0].carrier}}</li>
+                    <li>Origin City: {{tripOption.pricing[0].fare[0].origin}}</li>
+                    <li>Arrival Time: {{tripOption.slice[0].segment[0].leg[0].arrivalTime}}</li>
+                  </ul>
+                  <a ng-click="newTab()" href="#" class="btn btn-d btn-round">Buy Now</a>
+                </div>
+              </div>
+              <!-- /PRICE-TABLE -->
             </div>
           </div>
-          <!-- /PRICE-TABLE -->
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-        </div>
-
+        </section>
         <br>
-
       </div>
 
 
