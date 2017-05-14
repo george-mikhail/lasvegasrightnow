@@ -19,7 +19,7 @@
 
 
 
-    $http.get('http://api.wunderground.com/api/2685b91503dd6c76/conditions/q/NV/Las_Vegas.json').then(function(response) {
+    $http.get('https://api.wunderground.com/api/2685b91503dd6c76/conditions/q/NV/Las_Vegas.json').then(function(response) {
       $scope.weather = response.data;
       console.log($scope.weather);
     });
