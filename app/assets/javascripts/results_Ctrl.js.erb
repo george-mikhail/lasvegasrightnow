@@ -6,6 +6,8 @@
 
   angular.module("app").controller('resultsCtrl', function($scope, $http, $location, $anchorScroll) {
 
+    RemindersCtrl.$inject = ['$scope', '$http'];
+
 
     $scope.updateDatalist = function(searchTerm) {
       $http.get("/api/v1/airports.json?search=" + searchTerm).then(function(response) {
